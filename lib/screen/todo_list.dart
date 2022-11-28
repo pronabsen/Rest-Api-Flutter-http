@@ -1,7 +1,7 @@
 import 'package:class_project/model/todo_model.dart';
 import 'package:flutter/material.dart';
 
-import 'api/ApiService.dart';
+import '../api/ApiService.dart';
 
 class TodoList extends StatelessWidget {
   const TodoList({Key? key}) : super(key: key);

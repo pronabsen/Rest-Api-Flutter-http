@@ -1,30 +1,27 @@
 import 'package:flutter/material.dart';
 
-import 'api/ApiService.dart';
-import 'model/photo_model.dart';
+import '../api/ApiService.dart';
+import '../model/photo_model.dart';
 
-class PhotosList extends StatefulWidget {
-  const PhotosList({Key? key}) : super(key: key);
+class PhotosAlbum extends StatelessWidget {
+  int id;
+  String name;
 
-  @override
-  State<PhotosList> createState() => _PhotosListState();
-}
-
-class _PhotosListState extends State<PhotosList> {
-
+  PhotosAlbum({Key? key, required this.id, required this.name}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Photos List'),
+        title: Text('Album: $name'),
       ),
       body: Container(
         child: FutureBuilder<List<Photo>>(
-          future: ApiService.getPhotos(),
+          future: ApiService.getPhotosByAlbum(id.toString()),
           builder: (context, snapshot) {
-
             if (snapshot.connectionState == ConnectionState.done) {
+
+            //  print(snapshot.data);
               final List<Photo>? posts = snapshot.data;
 
               return GridView.builder(
@@ -39,8 +36,8 @@ class _PhotosListState extends State<PhotosList> {
                   return InkWell(
                     onTap: () {
                       //   Get.to(BookDetailsScreen(), arguments: [snapshot.data![index].id, snapshot.data![index].bookName]);
-                      //  Navigator.pushNamed(context, BookDetailsScreen.routeName,
-                      //     arguments: [snapshot.data![index].id, snapshot.data![index].bookName]);
+                    //  Navigator.pushNamed(context, BookDetailsScreen.routeName,
+                     //     arguments: [snapshot.data![index].id, snapshot.data![index].bookName]);
                       // toast(snapshot.data![index].id.toString());
                     },
                     child: Card(
@@ -71,7 +68,7 @@ class _PhotosListState extends State<PhotosList> {
                               children: [
                                 //const SizedBox(height: 6,),
                                 Text(posts[index].title.toString(), style: TextStyle(fontSize: 20),maxLines: 2,),
-                                //   Text(snapshot.data![index].bookAuthor, style: secondaryTextStyle(),maxLines: 1,)
+                             //   Text(snapshot.data![index].bookAuthor, style: secondaryTextStyle(),maxLines: 1,)
                               ],
                             ),
                           )
@@ -93,4 +90,3 @@ class _PhotosListState extends State<PhotosList> {
     );
   }
 }
-

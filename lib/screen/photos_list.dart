@@ -1,27 +1,30 @@
 import 'package:flutter/material.dart';
 
-import 'api/ApiService.dart';
-import 'model/photo_model.dart';
+import '../api/ApiService.dart';
+import '../model/photo_model.dart';
 
-class PhotosAlbum extends StatelessWidget {
-  int id;
-  String name;
+class PhotosList extends StatefulWidget {
+  const PhotosList({Key? key}) : super(key: key);
 
-  PhotosAlbum({Key? key, required this.id, required this.name}) : super(key: key);
+  @override
+  State<PhotosList> createState() => _PhotosListState();
+}
+
+class _PhotosListState extends State<PhotosList> {
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Album: $name'),
+        title: Text('Photos List'),
       ),
       body: Container(
         child: FutureBuilder<List<Photo>>(
-          future: ApiService.getPhotosByAlbum(id.toString()),
+          future: ApiService.getPhotos(),
           builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
 
-            //  print(snapshot.data);
+            if (snapshot.connectionState == ConnectionState.done) {
               final List<Photo>? posts = snapshot.data;
 
               return GridView.builder(
@@ -36,8 +39,8 @@ class PhotosAlbum extends StatelessWidget {
                   return InkWell(
                     onTap: () {
                       //   Get.to(BookDetailsScreen(), arguments: [snapshot.data![index].id, snapshot.data![index].bookName]);
-                    //  Navigator.pushNamed(context, BookDetailsScreen.routeName,
-                     //     arguments: [snapshot.data![index].id, snapshot.data![index].bookName]);
+                      //  Navigator.pushNamed(context, BookDetailsScreen.routeName,
+                      //     arguments: [snapshot.data![index].id, snapshot.data![index].bookName]);
                       // toast(snapshot.data![index].id.toString());
                     },
                     child: Card(
@@ -68,7 +71,7 @@ class PhotosAlbum extends StatelessWidget {
                               children: [
                                 //const SizedBox(height: 6,),
                                 Text(posts[index].title.toString(), style: TextStyle(fontSize: 20),maxLines: 2,),
-                             //   Text(snapshot.data![index].bookAuthor, style: secondaryTextStyle(),maxLines: 1,)
+                                //   Text(snapshot.data![index].bookAuthor, style: secondaryTextStyle(),maxLines: 1,)
                               ],
                             ),
                           )
@@ -89,4 +92,34 @@ class PhotosAlbum extends StatelessWidget {
       ),
     );
   }
+
+
+  showAlertDialog(BuildContext context, String body) {
+    // Create button
+    Widget okButton = ElevatedButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    // Create AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text('Comment Info'),
+      content: Text(body),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
 }
+

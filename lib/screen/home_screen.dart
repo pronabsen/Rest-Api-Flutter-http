@@ -1,9 +1,9 @@
-import 'package:class_project/album_list.dart';
-import 'package:class_project/comment_list.dart';
-import 'package:class_project/photos_list.dart';
-import 'package:class_project/post_list.dart';
-import 'package:class_project/todo_list.dart';
-import 'package:class_project/user_list.dart';
+import 'package:class_project/screen/album_list.dart';
+import 'package:class_project/screen/comment_list.dart';
+import 'package:class_project/screen/photos_list.dart';
+import 'package:class_project/screen/post_list.dart';
+import 'package:class_project/screen/todo_list.dart';
+import 'package:class_project/screen/user_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';

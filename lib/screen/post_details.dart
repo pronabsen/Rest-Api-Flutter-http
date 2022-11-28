@@ -3,7 +3,7 @@ import 'package:class_project/model/post_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
-import 'api/ApiService.dart';
+import '../api/ApiService.dart';
 
 class PostDetails extends StatelessWidget {
 

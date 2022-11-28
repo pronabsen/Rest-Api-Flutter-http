@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:class_project/model/comment_model.dart';
 import 'package:class_project/model/photo_model.dart';
 import 'package:class_project/model/todo_model.dart';
@@ -39,7 +38,7 @@ class ApiService {
       List<Comment> posts = body.map((dynamic item) => Comment.fromJson(item),).toList();
       return posts;
     } else {
-      throw "Unable to retrieve commnet.";
+      throw "Unable to retrieve comment.";
     }
   }
 
@@ -52,7 +51,7 @@ class ApiService {
       List<Comment> posts = body.map((dynamic item) => Comment.fromJson(item),).toList();
       return posts;
     } else {
-      throw "Unable to retrieve commnet.";
+      throw "Unable to retrieve comment.";
     }
   }
 

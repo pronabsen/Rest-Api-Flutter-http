@@ -1,9 +1,9 @@
 import 'package:class_project/model/album_model.dart';
-import 'package:class_project/photos_album.dart';
+import 'package:class_project/screen/photos_album.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'api/ApiService.dart';
+import '../api/ApiService.dart';
 
 
 class AlbumList extends StatefulWidget {

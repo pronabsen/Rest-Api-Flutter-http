@@ -1,7 +1,7 @@
 import 'package:class_project/model/comment_model.dart';
 import 'package:flutter/material.dart';
 
-import 'api/ApiService.dart';
+import '../api/ApiService.dart';
 class CommentList extends StatelessWidget {
   const CommentList({Key? key}) : super(key: key);
 

@@ -1,5 +1,4 @@
-import 'package:class_project/home_screen.dart';
-import 'package:class_project/post_list.dart';
+import 'package:class_project/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
