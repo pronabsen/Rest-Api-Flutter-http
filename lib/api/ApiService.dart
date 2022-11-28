@@ -7,19 +7,12 @@ import 'package:http/http.dart';
 import '../model/album_model.dart';
 import '../model/post_model.dart';
 import 'package:http/http.dart' as http;
-
+import 'ApiConstants.dart';
 class ApiService {
-  static String postsURL = "https://jsonplaceholder.typicode.com/posts";
-  static String postsCommentURL = "https://jsonplaceholder.typicode.com/comments?postId=";
-  static String albumURL = "https://jsonplaceholder.typicode.com/albums";
-  static String photosByAlbumURL = "https://jsonplaceholder.typicode.com/albums/";
-  static String photosURl = "https://jsonplaceholder.typicode.com/photos";
-  static String usersURl = "https://jsonplaceholder.typicode.com/users";
-  static String todoURL = "https://jsonplaceholder.typicode.com/todos";
-  static String commentURL = "https://jsonplaceholder.typicode.com/comments";
+
 
   static Future<List<Post>> getPosts() async {
-    Response res = await get(Uri.parse(postsURL));
+    Response res = await get(Uri.parse(ApiConstants.postsURL));
 
     if (res.statusCode == 200) {
       List<dynamic> body = jsonDecode(res.body);
@@ -31,7 +24,7 @@ class ApiService {
   }
 
   static Future<List<Comment>> getCommentByPost(String id) async {
-    Response res = await get(Uri.parse(postsCommentURL+id));
+    Response res = await get(Uri.parse(ApiConstants.postsCommentURL+id));
 
     if (res.statusCode == 200) {
       List<dynamic> body = jsonDecode(res.body);
@@ -44,7 +37,7 @@ class ApiService {
 
 
   static Future<List<Comment>> getComment() async {
-    Response res = await get(Uri.parse(commentURL));
+    Response res = await get(Uri.parse(ApiConstants.commentURL));
 
     if (res.statusCode == 200) {
       List<dynamic> body = jsonDecode(res.body);
@@ -56,7 +49,7 @@ class ApiService {
   }
 
   static Future<List<Album>> getAlbum() async {
-    Response res = await get(Uri.parse(albumURL));
+    Response res = await get(Uri.parse(ApiConstants.albumURL));
 
     if (res.statusCode == 200) {
       List<dynamic> body = jsonDecode(res.body);
@@ -67,7 +60,7 @@ class ApiService {
     }
   }
   static Future<List<Todo>> getTodo() async {
-    Response res = await get(Uri.parse(todoURL));
+    Response res = await get(Uri.parse(ApiConstants.todoURL));
 
     if (res.statusCode == 200) {
       List<dynamic> body = jsonDecode(res.body);
@@ -91,7 +84,7 @@ class ApiService {
   }
 
   static Future<List<Photo>> getPhotos() async {
-    Response res = await get(Uri.parse(photosURl));
+    Response res = await get(Uri.parse(ApiConstants.photosURl));
 
     if (res.statusCode == 200) {
       List<dynamic> body = jsonDecode(res.body);
@@ -105,7 +98,7 @@ class ApiService {
 
   static Future<List<UserModel>> getUsers() async {
 
-    Response res = await get(Uri.parse(usersURl));
+    Response res = await get(Uri.parse(ApiConstants.usersURl));
 
     if (res.statusCode == 200) {
       List<dynamic> body = jsonDecode(res.body);
